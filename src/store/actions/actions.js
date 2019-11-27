@@ -17,9 +17,38 @@ export const decrement = () => {
   }
 }
 
-export const add = () => {
+export const add = (value) => {
   return {
-    type: DECREMENT
+    type: ADD,
+    val: value
   }
 }
 
+export const subtract = (value) => {
+  return {
+    type: SUBTRACT,
+    val: value
+  }
+}
+
+export const saveResult = (res) => {
+  return {
+    type: STORE_RESULT,
+    result: res
+  }
+}
+
+export const storeResult = (res) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(saveResult(res));
+    }, 2000)
+  }
+}
+
+export const deleteResult = (res) => {
+  return {
+    type: DELETE_RESULT,
+    resultElId: res
+  }
+}
